@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MAIViewController : UIViewController
+#import <iCarousel/iCarousel.h>
+
+@interface MAIHistoryViewController : UIViewController
+<iCarouselDataSource, iCarouselDelegate>
 
 @end

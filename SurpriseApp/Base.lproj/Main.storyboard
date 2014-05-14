@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--History View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="MAIViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MAIHistoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,13 +15,69 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="oFZ-ug-qqF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0x-7X-BXk" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="eTO-Zq-lng"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="c75-oO-f7o"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ien-1K-99V" userLabel="distanceView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kyouhei" translatesAutoresizingMaskIntoConstraints="NO" id="ZLl-p6-S7h">
+                                        <rect key="frame" x="0.0" y="28" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mai" translatesAutoresizingMaskIntoConstraints="NO" id="VUa-Sv-Cpt">
+                                        <rect key="frame" x="288" y="28" width="32" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="DWc-Ih-Uo5"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i0x-7X-BXk" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="59y-L3-8hB"/>
+                            <constraint firstAttribute="trailing" secondItem="i0x-7X-BXk" secondAttribute="trailing" id="90M-oi-8OC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="i0x-7X-BXk" secondAttribute="bottom" id="9xt-yb-xsm"/>
+                            <constraint firstItem="ien-1K-99V" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="BZN-Yg-bnD"/>
+                            <constraint firstAttribute="trailing" secondItem="oFZ-ug-qqF" secondAttribute="trailing" id="CtT-6x-BMm"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oFZ-ug-qqF" secondAttribute="bottom" id="Gp8-FX-7By"/>
+                            <constraint firstItem="i0x-7X-BXk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PVS-l1-mwc"/>
+                            <constraint firstItem="oFZ-ug-qqF" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="UvG-8Q-I71"/>
+                            <constraint firstItem="ien-1K-99V" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eAD-hY-9gh"/>
+                            <constraint firstItem="oFZ-ug-qqF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fce-td-Bei"/>
+                            <constraint firstAttribute="trailing" secondItem="ien-1K-99V" secondAttribute="trailing" id="uhR-Du-OuQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carousel" destination="i0x-7X-BXk" id="p7E-2G-TK4"/>
+                        <outlet property="kyouhei" destination="ZLl-p6-S7h" id="O4g-LU-jS1"/>
+                        <outlet property="mai" destination="VUa-Sv-Cpt" id="g1i-0v-GaO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="320" height="568"/>
+        <image name="kyouhei" width="32" height="32"/>
+        <image name="mai" width="32" height="32"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

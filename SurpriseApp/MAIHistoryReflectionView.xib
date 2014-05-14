@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MAIHistoryReflectionView">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="tyf-cp-hZW"/>
+                <outlet property="dateLabel" destination="Urf-il-oAz" id="oxT-fz-GMl"/>
+                <outlet property="imageView" destination="Zks-gd-NO5" id="fUZ-R8-i7e"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zks-gd-NO5">
+                    <rect key="frame" x="10" y="110" width="240" height="280"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014年5月14日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-il-oAz">
+                    <rect key="frame" x="71" y="20" width="118" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zks-gd-NO5" secondAttribute="trailing" constant="10" id="A7f-Jb-Dn5"/>
+                <constraint firstItem="Zks-gd-NO5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="B1j-3H-3hh"/>
+                <constraint firstItem="Zks-gd-NO5" firstAttribute="top" secondItem="Urf-il-oAz" secondAttribute="bottom" constant="69" id="Vec-EA-Itm"/>
+                <constraint firstAttribute="bottom" secondItem="Zks-gd-NO5" secondAttribute="bottom" constant="10" id="bxO-AL-qyn"/>
+                <constraint firstItem="Urf-il-oAz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="o6q-NS-Ijk"/>
+                <constraint firstAttribute="centerX" secondItem="Urf-il-oAz" secondAttribute="centerX" id="pbT-dp-x1B"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+</document>
