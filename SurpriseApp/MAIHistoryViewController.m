@@ -8,7 +8,6 @@
 
 #import "MAIHistoryViewController.h"
 
-#import "FXImageView.h"
 #import "MAIHistoryReflectionView.h"
 
 @interface MAIHistoryViewController ()
