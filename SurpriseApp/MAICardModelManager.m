@@ -1,0 +1,108 @@
+//
+//  MAICardModelManager.m
+//  SurpriseApp
+//
+//  Created by 山口 恭兵 on 2014/05/15.
+//  Copyright (c) 2014年 山口 恭兵. All rights reserved.
+//
+
+#import "MAICardModelManager.h"
+#import "MAICardModel.h"
+
+static MAICardModelManager *_sharedInstance = nil;
+
+static NSString *const kStoredCardKey = @"StoredCards";
+static NSString *const kEnableTutorial = @"enableTutorial";
+
+@interface MAICardModelManager ()
+@property (strong, nonatomic) NSMutableArray *array;
+@end
+
+@implementation MAICardModelManager
+
++ (MAICardModelManager *)sharedManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[MAICardModelManager alloc] init];
+    });
+    return _sharedInstance;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self p_setUpTutorialCards];
+        [self p_setUpDefaults];
+        [self addObserver:self
+               forKeyPath:@"array"
+                  options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                  context:nil];
+        _array = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredCardKey];
+        if (!_array) {
+            _array = [[NSMutableArray alloc] init];
+        }
+        _storedCards = [self mutableArrayValueForKey:@"array"];
+    }
+    return self;
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath
+                     ofObject:(id)object
+                       change:(NSDictionary *)change
+                      context:(void *)context
+{
+    if ([keyPath isEqualToString:@"array"]) {
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setObject:_storedCards forKey:kStoredCardKey];
+        [ud synchronize];
+    }
+}
+
+/***************************************************/
+#pragma mark - Accessor Method
+/***************************************************/
+
+- (BOOL)enableTutorial
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kEnableTutorial];
+}
+
+- (void)setEnableTutorial:(BOOL)enableTutorial
+{
+    [[NSUserDefaults standardUserDefaults] setBool:enableTutorial forKey:kEnableTutorial];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+/***************************************************/
+#pragma mark - Private Method
+/***************************************************/
+
+/**
+ *  Tutorial用カードモデルを作成する
+ */
+- (void)p_setUpTutorialCards
+{
+    _tutorialCards = [NSMutableArray array];
+    for (int i = 1; i < 6; i++) {
+        MAICardModel *card = [[MAICardModel alloc] init];
+        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
+        [self.tutorialCards addObject:card];
+    }
+    for (int i = 1; i < 6; i++) {
+        MAICardModel *card = [[MAICardModel alloc] init];
+        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
+        [self.tutorialCards addObject:card];
+    }
+    
+}
+
+- (void)p_setUpDefaults
+{
+    NSMutableDictionary* keyValues = [NSMutableDictionary dictionary];
+    [keyValues setObject:@"YES" forKey:kEnableTutorial];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:keyValues];
+}
+
+@end

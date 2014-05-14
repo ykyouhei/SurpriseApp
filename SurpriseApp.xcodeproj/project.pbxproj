@@ -28,6 +28,8 @@
 		412F0C5F1922530D00A3727E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 412F0C411922530D00A3727E /* UIKit.framework */; };
 		412F0C671922530D00A3727E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 412F0C651922530D00A3727E /* InfoPlist.strings */; };
 		412F0C691922530D00A3727E /* SurpriseAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 412F0C681922530D00A3727E /* SurpriseAppTests.m */; };
+		4152DDCD1923CB760021A8E3 /* MAICardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152DDCC1923CB760021A8E3 /* MAICardModel.m */; };
+		4152DDD01923D0230021A8E3 /* MAICardModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152DDCF1923D0230021A8E3 /* MAICardModelManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,10 @@
 		412F0C641922530D00A3727E /* SurpriseAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SurpriseAppTests-Info.plist"; sourceTree = "<group>"; };
 		412F0C661922530D00A3727E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		412F0C681922530D00A3727E /* SurpriseAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SurpriseAppTests.m; sourceTree = "<group>"; };
+		4152DDCB1923CB760021A8E3 /* MAICardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAICardModel.h; sourceTree = "<group>"; };
+		4152DDCC1923CB760021A8E3 /* MAICardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAICardModel.m; sourceTree = "<group>"; };
+		4152DDCE1923D0230021A8E3 /* MAICardModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAICardModelManager.h; sourceTree = "<group>"; };
+		4152DDCF1923D0230021A8E3 /* MAICardModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAICardModelManager.m; sourceTree = "<group>"; };
 		74E33E7941104EF78C5349F0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,11 +197,23 @@
 		412F0C861922672000A3727E /* History */ = {
 			isa = PBXGroup;
 			children = (
+				4152DDCA1923CB5A0021A8E3 /* Model */,
 				4113F05B19226F68004CB8F8 /* View */,
 				412F0C521922530D00A3727E /* MAIHistoryViewController.h */,
 				412F0C531922530D00A3727E /* MAIHistoryViewController.m */,
 			);
 			name = History;
+			sourceTree = "<group>";
+		};
+		4152DDCA1923CB5A0021A8E3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4152DDCB1923CB760021A8E3 /* MAICardModel.h */,
+				4152DDCC1923CB760021A8E3 /* MAICardModel.m */,
+				4152DDCE1923D0230021A8E3 /* MAICardModelManager.h */,
+				4152DDCF1923D0230021A8E3 /* MAICardModelManager.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,10 +352,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4113F05E19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */,
+				4152DDCD1923CB760021A8E3 /* MAICardModel.m in Sources */,
 				412F0C541922530D00A3727E /* MAIHistoryViewController.m in Sources */,
 				412F0C4E1922530D00A3727E /* MAIAppDelegate.m in Sources */,
 				412F0C4A1922530D00A3727E /* main.m in Sources */,
 				4113F066192278D6004CB8F8 /* UIView+Extension.m in Sources */,
+				4152DDD01923D0230021A8E3 /* MAICardModelManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

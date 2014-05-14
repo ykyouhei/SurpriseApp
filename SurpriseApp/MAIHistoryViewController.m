@@ -9,13 +9,16 @@
 #import "MAIHistoryViewController.h"
 
 #import "MAIHistoryReflectionView.h"
+#import "MAICardModelManager.h"
+#import "MAICardModel.h"
 
 @interface MAIHistoryViewController ()
 @property (weak, nonatomic) IBOutlet iCarousel *carousel;
-@property (nonatomic, strong) NSMutableArray *photos;
 
 @property (weak, nonatomic) IBOutlet UIImageView *kyouhei;
 @property (weak, nonatomic) IBOutlet UIImageView *mai;
+
+@property (weak, nonatomic) MAICardModelManager *cardModelManager;
 
 @end
 
@@ -28,15 +31,8 @@
     self.carousel.type = iCarouselTypeInvertedTimeMachine;
     self.carousel.bounces = NO;
     
-    self.photos = [NSMutableArray array];
-    for (int i = 1; i < 6; i++) {
-        [self.photos addObject:[UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]]];
-    }
-    for (int i = 1; i < 6; i++) {
-        [self.photos addObject:[UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]]];
-    }
+    self.cardModelManager = [MAICardModelManager sharedManager];
     [self.carousel reloadData];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +45,7 @@
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return [_photos count];
+    return self.cardModelManager.tutorialCards.count;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(MAIHistoryReflectionView *)view
@@ -62,7 +58,8 @@
     }
     
     //set image
-    ((MAIHistoryReflectionView *)view).imageView.image = _photos[index];
+    __weak MAICardModel *cardModel = self.cardModelManager.tutorialCards[index];
+    ((MAIHistoryReflectionView *)view).imageView.image = cardModel.mainImage;
     [view update];
     return view;
 }
