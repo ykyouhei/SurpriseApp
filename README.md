@@ -25,7 +25,7 @@ $ pod install
 
 これで、Podfileに記述してあるライブラリを落としてきます。
 
-あとは　_PutTheSound.xcworkspace_　をクリックしてプロジェクトを開くだけです。
+あとは　_*.xcworkspace_　をクリックしてプロジェクトを開くだけです。
 いつも使っている、*.xcodeproj　じゃないので注意
 
 #### 参考
