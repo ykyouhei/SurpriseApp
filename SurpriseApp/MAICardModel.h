@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, MAICardModelState) {
-    MAICardModelStateFront,
-    MAICardModelStateBack
-};
-
-
 /**
  *  カードデータ用モデル
  */
@@ -24,6 +18,6 @@ typedef NS_ENUM(NSUInteger, MAICardModelState) {
 @property (strong, nonatomic) UIImage *mainImage;
 @property (strong, nonatomic) NSString *message;
 
-@property (assign, nonatomic) MAICardModelState cardState;
+@property (assign, nonatomic) BOOL isBack;
 
 @end

@@ -35,10 +35,15 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.contentView.frame = self.bounds;
-    self.contentView.layer.cornerRadius = 5.0f;
+    self.frontView.frame = self.bounds;
+    self.frontView.layer.cornerRadius = 5.0f;
+    self.backView.frame = self.bounds;
+    self.backView.layer.cornerRadius = 5.0f;
+    self.backImageView.layer.cornerRadius = 5.0f;
+    self.backView.hidden = YES;
     
-    [self addSubview:self.contentView];
+    [self addSubview:self.frontView];
+    [self addSubview:self.backView];
 }
 
 @end

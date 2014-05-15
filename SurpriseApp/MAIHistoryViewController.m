@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.carousel.type = iCarouselTypeInvertedTimeMachine;
+    self.carousel.type = iCarouselTypeTimeMachine;
     self.carousel.bounces = NO;
     
     self.cardModelManager = [MAICardModelManager sharedManager];
@@ -42,10 +42,27 @@
 }
 
 
+/***************************************************/
+#pragma mark - IB Action
+/***************************************************/
+
+- (IBAction)didTapAddButton:(UIButton *)sender
+{
+    MAICardModel *card = [MAICardModel new];
+    card.mainImage = [UIImage imageNamed:@"photo_1"];
+    [self.cardModelManager.storedCards addObject:card];
+    [self.carousel insertItemAtIndex:self.carousel.currentItemIndex + self.cardModelManager.tutorialCards.count animated:YES];
+}
+
+
+
+/***************************************************/
+#pragma mark - iCarousel Dalegate
+/***************************************************/
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return self.cardModelManager.tutorialCards.count;
+    return self.cardModelManager.storedCards.count + self.cardModelManager.tutorialCards.count;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(MAIHistoryReflectionView *)view
@@ -58,23 +75,36 @@
     }
     
     //set image
-    __weak MAICardModel *cardModel = self.cardModelManager.tutorialCards[index];
-    ((MAIHistoryReflectionView *)view).imageView.image = cardModel.mainImage;
+    __weak MAICardModel *cardModel;
+    if (self.cardModelManager.enableTutorial && index < self.cardModelManager.tutorialCards.count) {
+        cardModel = self.cardModelManager.tutorialCards[index];
+    } else {
+        cardModel = self.cardModelManager.storedCards[index-self.cardModelManager.tutorialCards.count];
+    }
+    
+    view.backView.hidden = !cardModel.isBack;
+    view.imageView.image = cardModel.mainImage;
+    view.backImageView.image = [cardModel.mainImage applyLightEffect];
     [view update];
+    
     return view;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
     MAIHistoryReflectionView *view = (MAIHistoryReflectionView *)[carousel itemViewAtIndex:index];
-    UIView *toView = [[UIView alloc] initWithFrame:view.contentView.frame];
-    toView.backgroundColor = [UIColor whiteColor];
-    toView.layer.cornerRadius = 5.0f;
-    toView.clipsToBounds = YES;
+    __weak MAICardModel *cardModel;
+    if (self.cardModelManager.enableTutorial && index < self.cardModelManager.tutorialCards.count) {
+        cardModel = self.cardModelManager.tutorialCards[index];
+    } else {
+        cardModel = self.cardModelManager.storedCards[index-self.cardModelManager.tutorialCards.count];
+    }
     
-    [UIView transitionFromView:view.contentView
-                        toView:toView duration:0.3 options:UIViewAnimationOptionTransitionFlipFromLeft completion:^(BOOL finished) {
-        
+    [UIView transitionWithView:view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
+        view.backView.hidden = cardModel.isBack;
+    } completion:^(BOOL finished) {
+        cardModel.isBack = !cardModel.isBack;
+        [view update];
     }];
 }
 

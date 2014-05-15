@@ -33,13 +33,14 @@ static NSString *const kEnableTutorial = @"enableTutorial";
 {
     self = [super init];
     if (self) {
-        [self p_setUpTutorialCards];
         [self p_setUpDefaults];
+        [self p_setUpTutorialCards];
         [self addObserver:self
                forKeyPath:@"array"
                   options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
                   context:nil];
-        _array = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredCardKey];
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredCardKey];
+        _array = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         if (!_array) {
             _array = [[NSMutableArray alloc] init];
         }
@@ -55,7 +56,8 @@ static NSString *const kEnableTutorial = @"enableTutorial";
 {
     if ([keyPath isEqualToString:@"array"]) {
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-        [ud setObject:_storedCards forKey:kStoredCardKey];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:_storedCards];
+        [ud setObject:data forKey:kStoredCardKey];
         [ud synchronize];
     }
 }
@@ -85,17 +87,20 @@ static NSString *const kEnableTutorial = @"enableTutorial";
 - (void)p_setUpTutorialCards
 {
     _tutorialCards = [NSMutableArray array];
-    for (int i = 1; i < 6; i++) {
-        MAICardModel *card = [[MAICardModel alloc] init];
-        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
-        [self.tutorialCards addObject:card];
-    }
-    for (int i = 1; i < 6; i++) {
-        MAICardModel *card = [[MAICardModel alloc] init];
-        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
-        [self.tutorialCards addObject:card];
+    if (!self.enableTutorial) {
+        return;
     }
     
+    for (int i = 1; i < 6; i++) {
+        MAICardModel *card = [[MAICardModel alloc] init];
+        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
+        [self.tutorialCards addObject:card];
+    }
+    for (int i = 1; i < 6; i++) {
+        MAICardModel *card = [[MAICardModel alloc] init];
+        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
+        [self.tutorialCards addObject:card];
+    }
 }
 
 - (void)p_setUpDefaults

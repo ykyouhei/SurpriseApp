@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        _cardState = MAICardModelStateFront;
+        _isBack = NO;
     }
     return self;
 }
@@ -26,7 +26,7 @@
 {
     self = [super init];
     if (self) {
-        _cardState = MAICardModelStateFront;
+        _isBack = NO;
         _date = date;
         _title = title;
         _mainImage = image;
@@ -42,6 +42,26 @@
     [df setDateFormat:@"yyyy年MM月dd日"];
     
     return [df stringFromDate:_date];
+}
+
+-(void)encodeWithCoder:(NSCoder*)encoder {
+    [encoder encodeObject:self.date forKey:@"date"];
+    [encoder encodeObject:self.title forKey:@"title"];
+    [encoder encodeObject:self.message forKey:@"message"];
+    [encoder encodeObject:self.mainImage forKey:@"mainImage"];
+    [encoder encodeBool:self.isBack forKey:@"isBack"];
+}
+
+-(id)initWithCoder:(NSCoder*)decoder {
+    self = [super init];
+    if (self) {
+        self.date = [decoder decodeObjectForKey:@"date"];
+        self.title = [decoder decodeObjectForKey:@"title"];
+        self.message = [decoder decodeObjectForKey:@"message"];
+        self.mainImage = [decoder decodeObjectForKey:@"mainImage"];
+        self.isBack = [decoder decodeBoolForKey:@"isBack"];
+    }
+    return self;
 }
 
 @end

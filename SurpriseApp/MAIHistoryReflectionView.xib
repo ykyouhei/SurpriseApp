@@ -6,18 +6,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MAIHistoryReflectionView">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="tyf-cp-hZW"/>
+                <outlet property="backImageView" destination="jgp-52-dVj" id="mcK-xQ-gng"/>
+                <outlet property="backView" destination="4eS-GG-nRW" id="e7F-oD-Hq2"/>
                 <outlet property="dateLabel" destination="Urf-il-oAz" id="oxT-fz-GMl"/>
+                <outlet property="frontView" destination="iN0-l3-epB" id="Mxo-Zp-HNb"/>
                 <outlet property="imageView" destination="Zks-gd-NO5" id="fUZ-R8-i7e"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="260" height="400"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="frontView">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="402"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zks-gd-NO5">
-                    <rect key="frame" x="10" y="110" width="240" height="280"/>
+                    <rect key="frame" x="10" y="110" width="240" height="282"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014年5月14日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-il-oAz">
@@ -37,6 +39,19 @@
                 <constraint firstItem="Urf-il-oAz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="o6q-NS-Ijk"/>
                 <constraint firstAttribute="centerX" secondItem="Urf-il-oAz" secondAttribute="centerX" id="pbT-dp-x1B"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="4eS-GG-nRW" userLabel="backView">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="402"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jgp-52-dVj">
+                    <rect key="frame" x="0.0" y="0.0" width="260" height="402"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

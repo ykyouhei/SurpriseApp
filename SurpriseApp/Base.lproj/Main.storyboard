@@ -47,6 +47,20 @@
                                     <constraint firstAttribute="height" constant="60" id="DWc-Ih-Uo5"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHf-vQ-4TQ">
+                                <rect key="frame" x="149" y="536" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="PGX-zm-HhC"/>
+                                    <constraint firstAttribute="height" constant="22" id="Zah-Uo-TSX"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapAddButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hy2-d9-GUt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -59,7 +73,9 @@
                             <constraint firstItem="i0x-7X-BXk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PVS-l1-mwc"/>
                             <constraint firstItem="oFZ-ug-qqF" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="UvG-8Q-I71"/>
                             <constraint firstItem="ien-1K-99V" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="eAD-hY-9gh"/>
+                            <constraint firstAttribute="centerX" secondItem="HHf-vQ-4TQ" secondAttribute="centerX" id="fJU-iv-S6G"/>
                             <constraint firstItem="oFZ-ug-qqF" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="fce-td-Bei"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="HHf-vQ-4TQ" secondAttribute="bottom" constant="10" id="mGD-mu-N9H"/>
                             <constraint firstAttribute="trailing" secondItem="ien-1K-99V" secondAttribute="trailing" id="uhR-Du-OuQ"/>
                         </constraints>
                     </view>
