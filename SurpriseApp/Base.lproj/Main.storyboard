@@ -59,6 +59,7 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapAddButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hy2-d9-GUt"/>
+                                    <segue destination="8MT-Ee-6iC" kind="modal" id="KER-3i-pG8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -79,6 +80,8 @@
                             <constraint firstAttribute="trailing" secondItem="ien-1K-99V" secondAttribute="trailing" id="uhR-Du-OuQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="EMH-qD-Vs1"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="carousel" destination="i0x-7X-BXk" id="p7E-2G-TK4"/>
                         <outlet property="kyouhei" destination="ZLl-p6-S7h" id="O4g-LU-jS1"/>
@@ -87,6 +90,151 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-124" y="-87"/>
+        </scene>
+        <!--Add Card View Controller-->
+        <scene sceneID="E9I-zl-067">
+            <objects>
+                <viewController id="8MT-Ee-6iC" customClass="MAIAddCardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TTr-jS-kPV"/>
+                        <viewControllerLayoutGuide type="bottom" id="xB3-eS-vZc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P61-Xo-0bs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="nAp-oF-dyA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MnV-AW-fkr">
+                                <rect key="frame" x="20" y="15" width="84" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <size key="shadowOffset" width="0.0" height="3"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aa1-yb-dN8">
+                                <rect key="frame" x="20" y="61" width="78" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <size key="shadowOffset" width="0.0" height="3"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brc-pS-yJL">
+                                <rect key="frame" x="20" y="100" width="106" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <size key="shadowOffset" width="0.0" height="3"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhM-1e-Cqw">
+                                <rect key="frame" x="20" y="295" width="70" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <size key="shadowOffset" width="0.0" height="3"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="日付を選択" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dif-8l-Bfw">
+                                <rect key="frame" x="94" y="31" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8MT-Ee-6iC" id="QVj-eS-cE2"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="タイトルを入力" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3am-vt-s6O">
+                                <rect key="frame" x="94" y="75" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8MT-Ee-6iC" id="ipg-1s-bbW"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySR-qv-mdj">
+                                <rect key="frame" x="20" y="164" width="280" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z17-Qp-kDj">
+                                <rect key="frame" x="64" y="527" width="62" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="0bJ-HJ-zUR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapCancelButton:" destination="8MT-Ee-6iC" eventType="touchUpInside" id="wnW-ZU-R3U"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qib-AC-ZY8">
+                                <rect key="frame" x="226" y="527" width="30" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Y7x-28-sKe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapOkButton:" destination="8MT-Ee-6iC" eventType="touchUpInside" id="Xhw-bj-g1C"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUe-Oa-4d9">
+                                <rect key="frame" x="16" y="344" width="74" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qsB-Qs-Qzq" appends="YES" id="MFq-ix-ZSu"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xB3-eS-vZc" firstAttribute="top" secondItem="Qib-AC-ZY8" secondAttribute="bottom" constant="5" id="7xh-kR-K07"/>
+                            <constraint firstItem="nAp-oF-dyA" firstAttribute="leading" secondItem="P61-Xo-0bs" secondAttribute="leading" id="BVh-iy-bIO"/>
+                            <constraint firstItem="nAp-oF-dyA" firstAttribute="top" secondItem="P61-Xo-0bs" secondAttribute="top" id="Pzr-p0-y9l"/>
+                            <constraint firstAttribute="trailing" secondItem="nAp-oF-dyA" secondAttribute="trailing" id="SOq-CH-sD7"/>
+                            <constraint firstAttribute="trailing" secondItem="Qib-AC-ZY8" secondAttribute="trailing" constant="64" id="Z9k-FA-AMq"/>
+                            <constraint firstItem="xB3-eS-vZc" firstAttribute="top" secondItem="nAp-oF-dyA" secondAttribute="bottom" id="jxA-Re-0Zb"/>
+                            <constraint firstItem="z17-Qp-kDj" firstAttribute="leading" secondItem="P61-Xo-0bs" secondAttribute="leading" constant="64" id="mlw-tm-tQL"/>
+                            <constraint firstItem="xB3-eS-vZc" firstAttribute="top" secondItem="z17-Qp-kDj" secondAttribute="bottom" constant="5" id="xvN-So-ZCn"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="X94-x1-xYt"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="oUe-Oa-4d9" id="Ian-xC-9lA"/>
+                        <outlet property="messageTextView" destination="ySR-qv-mdj" id="f0M-GM-25R"/>
+                        <outlet property="textField" destination="dif-8l-Bfw" id="r02-7p-Oc4"/>
+                        <outlet property="titleTextField" destination="3am-vt-s6O" id="0Bd-4h-XO2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L7r-Wt-HK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qsB-Qs-Qzq">
+                    <connections>
+                        <action selector="didTapImageView:" destination="8MT-Ee-6iC" id="zyy-B0-afn"/>
+                        <outlet property="delegate" destination="8MT-Ee-6iC" id="SV0-FX-75Z"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="363" y="-87"/>
         </scene>
     </scenes>
     <resources>

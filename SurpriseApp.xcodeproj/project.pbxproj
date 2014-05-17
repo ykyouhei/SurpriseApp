@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16ABB8D8E08643EB821FF76B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BCE2136A1E54B699EA2DC27 /* libPods.a */; };
+		41093AF9192754B700C35CA2 /* MAIAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41093AF8192754B700C35CA2 /* MAIAddCardViewController.m */; };
 		4113F05E19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4113F05D19226F92004CB8F8 /* MAIHistoryReflectionView.m */; };
 		4113F05F19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4113F05D19226F92004CB8F8 /* MAIHistoryReflectionView.m */; };
 		4113F06119226FB0004CB8F8 /* MAIHistoryReflectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4113F06019226FB0004CB8F8 /* MAIHistoryReflectionView.xib */; };
@@ -45,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		0BCE2136A1E54B699EA2DC27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		41093AF7192754B700C35CA2 /* MAIAddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAIAddCardViewController.h; sourceTree = "<group>"; };
+		41093AF8192754B700C35CA2 /* MAIAddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAIAddCardViewController.m; sourceTree = "<group>"; };
 		4113F05C19226F92004CB8F8 /* MAIHistoryReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAIHistoryReflectionView.h; sourceTree = "<group>"; };
 		4113F05D19226F92004CB8F8 /* MAIHistoryReflectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAIHistoryReflectionView.m; sourceTree = "<group>"; };
 		4113F06019226FB0004CB8F8 /* MAIHistoryReflectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAIHistoryReflectionView.xib; sourceTree = "<group>"; };
@@ -103,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41093AF61927548500C35CA2 /* AddCard */ = {
+			isa = PBXGroup;
+			children = (
+				41093AF7192754B700C35CA2 /* MAIAddCardViewController.h */,
+				41093AF8192754B700C35CA2 /* MAIAddCardViewController.m */,
+			);
+			name = AddCard;
+			sourceTree = "<group>";
+		};
 		4113F05B19226F68004CB8F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +171,7 @@
 		412F0C431922530D00A3727E /* SurpriseApp */ = {
 			isa = PBXGroup;
 			children = (
+				41093AF61927548500C35CA2 /* AddCard */,
 				4113F06319227898004CB8F8 /* Category */,
 				412F0C861922672000A3727E /* History */,
 				412F0C4C1922530D00A3727E /* MAIAppDelegate.h */,
@@ -358,6 +371,7 @@
 			files = (
 				419321F11925262600108B6C /* UIImage+ImageEffects.m in Sources */,
 				4113F05E19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */,
+				41093AF9192754B700C35CA2 /* MAIAddCardViewController.m in Sources */,
 				4152DDCD1923CB760021A8E3 /* MAICardModel.m in Sources */,
 				412F0C541922530D00A3727E /* MAIHistoryViewController.m in Sources */,
 				412F0C4E1922530D00A3727E /* MAIAppDelegate.m in Sources */,

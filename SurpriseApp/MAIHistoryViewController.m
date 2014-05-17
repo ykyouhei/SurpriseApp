@@ -35,6 +35,13 @@
     [self.carousel reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.carousel reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,10 +55,10 @@
 
 - (IBAction)didTapAddButton:(UIButton *)sender
 {
-    MAICardModel *card = [MAICardModel new];
-    card.mainImage = [UIImage imageNamed:@"photo_1"];
-    [self.cardModelManager.storedCards addObject:card];
-    [self.carousel insertItemAtIndex:self.carousel.currentItemIndex + self.cardModelManager.tutorialCards.count animated:YES];
+//    MAICardModel *card = [MAICardModel new];
+//    card.mainImage = [UIImage imageNamed:@"photo_1"];
+//    [self.cardModelManager.storedCards addObject:card];
+//    [self.carousel insertItemAtIndex:self.carousel.currentItemIndex + self.cardModelManager.tutorialCards.count animated:YES];
 }
 
 
