@@ -42,8 +42,19 @@
     self.backImageView.layer.cornerRadius = 5.0f;
     self.backView.hidden = YES;
     
+    self.marryView.frame = self.bounds;
+    self.marryView.layer.cornerRadius = 5.0f;
+    self.marryView.hidden = YES;
+    
     [self addSubview:self.frontView];
     [self addSubview:self.backView];
+    [self addSubview:self.marryView];
+}
+
+- (IBAction)tapMerryButton:(id)sender {
+    if ([self._delegate respondsToSelector:@selector(takeAPicture)]) {
+        [self._delegate takeAPicture];
+    }
 }
 
 @end
