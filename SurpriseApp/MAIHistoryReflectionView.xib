@@ -14,6 +14,7 @@
                 <outlet property="marryImageButton" destination="DWs-DD-gz0" id="e0g-tS-r8Z"/>
                 <outlet property="marryImageView" destination="Z2K-iI-SZa" id="d9h-XZ-Zto"/>
                 <outlet property="marryView" destination="J8I-Eq-4Mg" id="Lwm-dS-h5U"/>
+                <outlet property="titleLabe" destination="dOP-4K-OiD" id="dLb-q6-H3c"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -32,9 +33,12 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白馬でスノボ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOP-4K-OiD">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白馬でスノボ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dOP-4K-OiD">
                     <rect key="frame" x="10" y="59" width="240" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="0mM-EM-ywK"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>

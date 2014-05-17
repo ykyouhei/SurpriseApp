@@ -171,8 +171,8 @@
 		412F0C431922530D00A3727E /* SurpriseApp */ = {
 			isa = PBXGroup;
 			children = (
-				41093AF61927548500C35CA2 /* AddCard */,
 				4113F06319227898004CB8F8 /* Category */,
+				41093AF61927548500C35CA2 /* AddCard */,
 				412F0C861922672000A3727E /* History */,
 				412F0C4C1922530D00A3727E /* MAIAppDelegate.h */,
 				412F0C4D1922530D00A3727E /* MAIAppDelegate.m */,

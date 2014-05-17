@@ -20,4 +20,6 @@
 
 @property (assign, nonatomic) BOOL isBack;
 
+- (NSString *)dateString;
+
 @end

@@ -22,6 +22,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 
 @property (weak, nonatomic) MAICardModelManager *cardModelManager;
 
+@property (strong, nonatomic) CAEmitterLayer *emitterLayer;
+
 @end
 
 @implementation MAIHistoryViewController
@@ -30,6 +32,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self makeParcel];
+    
     self.carousel.type = iCarouselOptionFadeMax;
     self.carousel.bounces = NO;
     
@@ -51,16 +55,38 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 }
 
 
+- (void)makeParcel
+{
+    self.emitterLayer = [CAEmitterLayer layer];
+    
+    self.emitterLayer.emitterPosition = CGPointMake(self.view.centerX, self.view.bottom -40);
+    self.emitterLayer.renderMode = kCAEmitterLayerAdditive;
+    
+    CAEmitterCell *emitterCell = [CAEmitterCell emitterCell];
+    UIImage *image = [UIImage imageNamed:@"heart"];
+    emitterCell.contents = (__bridge id)(image.CGImage);
+    emitterCell.emissionLongitude = M_PI*2;
+    emitterCell.emissionRange = M_PI*2;
+    emitterCell.birthRate = 20;
+    emitterCell.lifetimeRange = 10.0;
+    emitterCell.velocity = 300;
+    emitterCell.xAcceleration = 10;
+    emitterCell.yAcceleration = 10;
+//    emitterCell.color = [UIColor colorWithRed:0.3
+//                                        green:0.56
+//                                         blue:0.36
+//                                        alpha:0.5].CGColor;
+    self.emitterLayer.emitterCells = @[emitterCell];
+    self.emitterLayer.hidden = YES;
+    [self.view.layer addSublayer:self.emitterLayer];
+}
+
 /***************************************************/
 #pragma mark - IB Action
 /***************************************************/
 
 - (IBAction)didTapAddButton:(UIButton *)sender
 {
-//    MAICardModel *card = [MAICardModel new];
-//    card.mainImage = [UIImage imageNamed:@"photo_1"];
-//    [self.cardModelManager.storedCards addObject:card];
-//    [self.carousel insertItemAtIndex:self.carousel.currentItemIndex + self.cardModelManager.tutorialCards.count animated:YES];
 }
 
 
@@ -112,6 +138,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 
     view.backView.hidden = !cardModel.isBack;
     view.imageView.image = cardModel.mainImage;
+    view.titleLabe.text = cardModel.title;
+    view.dateLabel.text = [cardModel dateString];
     view.backImageView.image = [cardModel.mainImage applyLightEffect];
     
     return view;
@@ -139,6 +167,7 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     CGFloat rate = carousel.scrollOffset / (carousel.numberOfItems-1);
     NSLog(@"%f", rate);
     
+    self.emitterLayer.hidden = !(carousel.numberOfItems-1 == carousel.scrollOffset);
     self.kyouhei.left = (self.view.width-self.kyouhei.width-10)/2*rate;
     self.mai.right = self.view.width - (self.view.width-self.mai.width-10)/2*rate;
 }
