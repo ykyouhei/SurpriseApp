@@ -12,6 +12,8 @@
 #import "MAICardModelManager.h"
 #import "MAICardModel.h"
 
+static NSString *const kMarryImageKey = @"kMarryImageKey";
+
 @interface MAIHistoryViewController ()
 @property (weak, nonatomic) IBOutlet iCarousel *carousel;
 
@@ -94,6 +96,20 @@
         cardModel = self.cardModelManager.storedCards[index-self.cardModelManager.tutorialCards.count];
     }
     
+    if (index == self.cardModelManager.tutorialCards.count - 1) {
+        view.marryView.hidden = NO;
+        view.backView.hidden = YES;
+        
+        NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:kMarryImageKey];
+        if(imageData) {
+            view.marryImageView.image = [UIImage imageWithData:imageData];
+            view.marryImageButton.hidden = YES;
+        } else {
+            view._delegate = self;
+        }
+        return view;
+    }
+
     view.backView.hidden = !cardModel.isBack;
     view.imageView.image = cardModel.mainImage;
     view.backImageView.image = [cardModel.mainImage applyLightEffect];
@@ -127,4 +143,46 @@
     self.mai.right = self.view.width - (self.view.width-self.mai.width-10)/2*rate;
 }
 
+/***************************************************/
+#pragma mark - MAIHistoryReflectionViewDelegate
+/***************************************************/
+
+-(void)takeAPicture
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *ipc =
+        [[UIImagePickerController alloc] init];
+        ipc.delegate = self;
+        ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+        ipc.allowsEditing = NO;
+
+        [self presentViewController:ipc animated:YES completion:nil];
+    }
+}
+
+/***************************************************/
+#pragma mark - UIImagePickerControllerDelegate
+/***************************************************/
+
+-(void)imagePickerController:(UIImagePickerController*)picker
+       didFinishPickingImage:(UIImage*)image editingInfo:(NSDictionary*)editingInfo{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    //保存
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(targetImage:didFinishSavingWithError:contextInfo:),
+                                   NULL);
+}
+
+-(void)targetImage:(UIImage*)image
+didFinishSavingWithError:(NSError*)error contextInfo:(void*)context{
+    
+    if(error == nil){
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
+        [ud setObject:imageData forKey:kMarryImageKey];
+        [ud synchronize];
+        
+        [self.carousel reloadData];
+    }
+}
 @end

@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import <iCarousel/iCarousel.h>
+#import "MAIHistoryReflectionView.h"
 
 @interface MAIHistoryViewController : UIViewController
-<iCarouselDataSource, iCarouselDelegate>
+<iCarouselDataSource, iCarouselDelegate,
+MAIHistoryReflectionViewDelegate,
+UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end

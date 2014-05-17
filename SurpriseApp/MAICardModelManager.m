@@ -96,11 +96,6 @@ static NSString *const kEnableTutorial = @"enableTutorial";
         card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
         [self.tutorialCards addObject:card];
     }
-    for (int i = 1; i < 6; i++) {
-        MAICardModel *card = [[MAICardModel alloc] init];
-        card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
-        [self.tutorialCards addObject:card];
-    }
 }
 
 - (void)p_setUpDefaults
