@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.carousel.type = iCarouselTypeTimeMachine;
+    self.carousel.type = iCarouselOptionFadeMax;
     self.carousel.bounces = NO;
     
     self.cardModelManager = [MAICardModelManager sharedManager];
@@ -60,6 +60,11 @@
 #pragma mark - iCarousel Dalegate
 /***************************************************/
 
+-(CGFloat)carouselItemWidth:(iCarousel *)carousel
+{
+    return 280.0f;
+}
+
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     return self.cardModelManager.storedCards.count + self.cardModelManager.tutorialCards.count;
@@ -85,7 +90,6 @@
     view.backView.hidden = !cardModel.isBack;
     view.imageView.image = cardModel.mainImage;
     view.backImageView.image = [cardModel.mainImage applyLightEffect];
-    [view update];
     
     return view;
 }
@@ -104,7 +108,6 @@
         view.backView.hidden = cardModel.isBack;
     } completion:^(BOOL finished) {
         cardModel.isBack = !cardModel.isBack;
-        [view update];
     }];
 }
 

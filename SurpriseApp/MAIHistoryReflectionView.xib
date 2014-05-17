@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zks-gd-NO5">
-                    <rect key="frame" x="10" y="110" width="240" height="282"/>
+                    <rect key="frame" x="10" y="92" width="240" height="300"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014年5月14日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urf-il-oAz">
@@ -29,14 +29,23 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白馬でスノボ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOP-4K-OiD">
+                    <rect key="frame" x="10" y="59" width="240" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Zks-gd-NO5" secondAttribute="trailing" constant="10" id="A7f-Jb-Dn5"/>
                 <constraint firstItem="Zks-gd-NO5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="B1j-3H-3hh"/>
-                <constraint firstItem="Zks-gd-NO5" firstAttribute="top" secondItem="Urf-il-oAz" secondAttribute="bottom" constant="69" id="Vec-EA-Itm"/>
+                <constraint firstItem="dOP-4K-OiD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Dek-XP-Db4"/>
+                <constraint firstItem="Zks-gd-NO5" firstAttribute="top" secondItem="Urf-il-oAz" secondAttribute="bottom" constant="51" id="Vec-EA-Itm"/>
                 <constraint firstAttribute="bottom" secondItem="Zks-gd-NO5" secondAttribute="bottom" constant="10" id="bxO-AL-qyn"/>
+                <constraint firstAttribute="trailing" secondItem="dOP-4K-OiD" secondAttribute="trailing" constant="10" id="i1N-nh-R5B"/>
                 <constraint firstItem="Urf-il-oAz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="o6q-NS-Ijk"/>
+                <constraint firstItem="Zks-gd-NO5" firstAttribute="top" secondItem="dOP-4K-OiD" secondAttribute="bottom" constant="12" id="oJV-LW-DZ3"/>
                 <constraint firstAttribute="centerX" secondItem="Urf-il-oAz" secondAttribute="centerX" id="pbT-dp-x1B"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

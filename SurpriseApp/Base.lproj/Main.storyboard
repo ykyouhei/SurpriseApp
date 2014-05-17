@@ -21,7 +21,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0x-7X-BXk" customClass="iCarousel">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="488"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -30,7 +30,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ien-1K-99V" userLabel="distanceView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="480" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="kyouhei" translatesAutoresizingMaskIntoConstraints="NO" id="ZLl-p6-S7h">
@@ -66,8 +66,8 @@
                         <constraints>
                             <constraint firstItem="i0x-7X-BXk" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="59y-L3-8hB"/>
                             <constraint firstAttribute="trailing" secondItem="i0x-7X-BXk" secondAttribute="trailing" id="90M-oi-8OC"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="i0x-7X-BXk" secondAttribute="bottom" id="9xt-yb-xsm"/>
-                            <constraint firstItem="ien-1K-99V" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="BZN-Yg-bnD"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="i0x-7X-BXk" secondAttribute="bottom" constant="80" id="9xt-yb-xsm"/>
+                            <constraint firstItem="ien-1K-99V" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="480" id="BZN-Yg-bnD"/>
                             <constraint firstAttribute="trailing" secondItem="oFZ-ug-qqF" secondAttribute="trailing" id="CtT-6x-BMm"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="oFZ-ug-qqF" secondAttribute="bottom" id="Gp8-FX-7By"/>
                             <constraint firstItem="i0x-7X-BXk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PVS-l1-mwc"/>
