@@ -39,7 +39,7 @@
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
-    [df setDateFormat:@"yyyy年MM月dd日"];
+    [df setDateFormat:@"yyyy.MM.dd"];
     
     return [df stringFromDate:_date];
 }

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MAITakePictureView">
+            <connections>
+                <outlet property="cardView" destination="Kx1-Am-9mW" id="qyj-yq-TC3"/>
+                <outlet property="imageView" destination="srD-me-Ez6" id="J3g-NY-3Ul"/>
+                <outlet property="titleLabel" destination="GXe-yJ-Ksh" id="uup-uf-oex"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Kx1-Am-9mW" userLabel="MarryView">
+            <rect key="frame" x="0.0" y="0.0" width="234" height="360"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="polaroid" translatesAutoresizingMaskIntoConstraints="NO" id="5cv-qw-ikZ">
+                    <rect key="frame" x="0.0" y="0.0" width="234" height="360"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </imageView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="srD-me-Ez6">
+                    <rect key="frame" x="10" y="26" width="214" height="258"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="258" id="Abi-iN-NN5"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="8aA-fr-Jtw" appends="YES" id="jm5-Eb-OkA"/>
+                    </connections>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.05.14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LY5-he-aHp" userLabel="Label - 2014.05.31">
+                    <rect key="frame" x="20" y="297" width="194" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="25U-ui-yr1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="結婚式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.34999999403953552" translatesAutoresizingMaskIntoConstraints="NO" id="GXe-yJ-Ksh">
+                    <rect key="frame" x="10" y="321" width="214" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="WlE-SZ-7jj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LY5-he-aHp" firstAttribute="leading" secondItem="Kx1-Am-9mW" secondAttribute="leading" constant="20" id="7IM-tP-QXL"/>
+                <constraint firstAttribute="trailing" secondItem="5cv-qw-ikZ" secondAttribute="trailing" id="8ff-6j-UqY"/>
+                <constraint firstAttribute="trailing" secondItem="srD-me-Ez6" secondAttribute="trailing" constant="10" id="MGf-9J-Jny"/>
+                <constraint firstItem="5cv-qw-ikZ" firstAttribute="leading" secondItem="Kx1-Am-9mW" secondAttribute="leading" id="Ox7-Wt-Q13"/>
+                <constraint firstAttribute="bottom" secondItem="GXe-yJ-Ksh" secondAttribute="bottom" constant="18" id="Sxa-4A-Pkp"/>
+                <constraint firstItem="srD-me-Ez6" firstAttribute="top" secondItem="Kx1-Am-9mW" secondAttribute="top" constant="26" id="dPx-cT-qPa"/>
+                <constraint firstAttribute="bottom" secondItem="5cv-qw-ikZ" secondAttribute="bottom" id="gDK-PX-w0b"/>
+                <constraint firstAttribute="trailing" secondItem="LY5-he-aHp" secondAttribute="trailing" constant="20" id="h7L-jp-VgW"/>
+                <constraint firstItem="GXe-yJ-Ksh" firstAttribute="top" secondItem="LY5-he-aHp" secondAttribute="bottom" constant="3" id="kdd-yv-dFu"/>
+                <constraint firstItem="GXe-yJ-Ksh" firstAttribute="leading" secondItem="Kx1-Am-9mW" secondAttribute="leading" constant="10" id="nyi-1n-hfD"/>
+                <constraint firstAttribute="trailing" secondItem="GXe-yJ-Ksh" secondAttribute="trailing" constant="10" id="qgD-Oc-FZL"/>
+                <constraint firstItem="srD-me-Ez6" firstAttribute="leading" secondItem="Kx1-Am-9mW" secondAttribute="leading" constant="10" id="w9V-c4-Sk3"/>
+                <constraint firstItem="5cv-qw-ikZ" firstAttribute="top" secondItem="Kx1-Am-9mW" secondAttribute="top" id="xtK-jR-E6b"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <tapGestureRecognizer id="8aA-fr-Jtw">
+            <connections>
+                <action selector="didTapImage:" destination="-1" id="dvH-Q0-j4m"/>
+                <outlet property="delegate" destination="-1" id="iCr-9y-yfg"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="polaroid" width="262" height="380"/>
+    </resources>
+</document>

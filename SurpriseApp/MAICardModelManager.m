@@ -94,7 +94,7 @@ static NSString *const kEnableTutorial = @"enableTutorial";
     for (int i = 1; i < 6; i++) {
         MAICardModel *card = [[MAICardModel alloc] init];
         card.mainImage = [UIImage imageNamed:[NSString stringWithFormat:@"photo_%d", i]];
-        card.title = @"ほげほげhoeheihgehaiohohoahghaehigaoh";
+        card.title = @"ほげほげ";
         card.date = [NSDate date];
         [self.tutorialCards addObject:card];
     }

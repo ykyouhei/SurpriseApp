@@ -1,14 +1,14 @@
 //
-//  MAIHistoryReflectionView.m
+//  MAITakePictureView.m
 //  SurpriseApp
 //
-//  Created by 山口 恭兵 on 2014/05/14.
+//  Created by 山口 恭兵 on 2014/05/19.
 //  Copyright (c) 2014年 山口 恭兵. All rights reserved.
 //
 
-#import "MAIHistoryReflectionView.h"
+#import "MAITakePictureView.h"
 
-@implementation MAIHistoryReflectionView
+@implementation MAITakePictureView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,14 +34,22 @@
     [[NSBundle mainBundle] loadNibNamed:className owner:self options:0];
     
     self.backgroundColor = [UIColor clearColor];
+    self.layer.shadowOpacity = 0.5f;
+    self.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     self.clipsToBounds = NO;
     
-    self.frontView.frame = self.bounds;
-    self.backView.frame = self.bounds;
-    self.backView.hidden = YES;
-    
-    [self addSubview:self.frontView];
-    [self addSubview:self.backView];
+    self.cardView.frame = self.bounds;
+    [self addSubview:self.cardView];
 }
+
+- (IBAction)didTapImage:(UITapGestureRecognizer *)sender
+{
+    if ([self.delegate respondsToSelector:@selector(takePictureViewDidTapImage:)]) {
+        // sampleMethod2を呼び出す
+        [self.delegate takePictureViewDidTapImage:self];
+    }
+}
+
+
 
 @end

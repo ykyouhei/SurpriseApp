@@ -10,10 +10,13 @@
 
 #import <iCarousel/iCarousel.h>
 #import "MAIHistoryReflectionView.h"
+#import "MAITakePictureView.h"
 
 @interface MAIHistoryViewController : UIViewController
-<iCarouselDataSource, iCarouselDelegate,
-MAIHistoryReflectionViewDelegate,
-UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+<iCarouselDataSource,
+iCarouselDelegate,
+MAITakePictureViewDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate>
 
 @end

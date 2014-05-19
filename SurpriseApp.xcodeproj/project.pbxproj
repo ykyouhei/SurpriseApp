@@ -32,6 +32,8 @@
 		4152DDCD1923CB760021A8E3 /* MAICardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152DDCC1923CB760021A8E3 /* MAICardModel.m */; };
 		4152DDD01923D0230021A8E3 /* MAICardModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4152DDCF1923D0230021A8E3 /* MAICardModelManager.m */; };
 		419321F11925262600108B6C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 419321F01925262600108B6C /* UIImage+ImageEffects.m */; };
+		41C3EE38192A41A8006C84DC /* MAITakePictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 41C3EE37192A41A8006C84DC /* MAITakePictureView.m */; };
+		41C3EE3A192A41C3006C84DC /* MAITakePictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41C3EE39192A41C3006C84DC /* MAITakePictureView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,9 @@
 		4152DDCF1923D0230021A8E3 /* MAICardModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAICardModelManager.m; sourceTree = "<group>"; };
 		419321EF1925262600108B6C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		419321F01925262600108B6C /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		41C3EE36192A41A8006C84DC /* MAITakePictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAITakePictureView.h; sourceTree = "<group>"; };
+		41C3EE37192A41A8006C84DC /* MAITakePictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAITakePictureView.m; sourceTree = "<group>"; };
+		41C3EE39192A41C3006C84DC /* MAITakePictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MAITakePictureView.xib; sourceTree = "<group>"; };
 		74E33E7941104EF78C5349F0 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +126,9 @@
 				4113F05C19226F92004CB8F8 /* MAIHistoryReflectionView.h */,
 				4113F05D19226F92004CB8F8 /* MAIHistoryReflectionView.m */,
 				4113F06019226FB0004CB8F8 /* MAIHistoryReflectionView.xib */,
+				41C3EE36192A41A8006C84DC /* MAITakePictureView.h */,
+				41C3EE37192A41A8006C84DC /* MAITakePictureView.m */,
+				41C3EE39192A41C3006C84DC /* MAITakePictureView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -314,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4113F06119226FB0004CB8F8 /* MAIHistoryReflectionView.xib in Resources */,
+				41C3EE3A192A41C3006C84DC /* MAITakePictureView.xib in Resources */,
 				412F0C561922530D00A3727E /* Images.xcassets in Resources */,
 				412F0C481922530D00A3727E /* InfoPlist.strings in Resources */,
 				412F0C511922530D00A3727E /* Main.storyboard in Resources */,
@@ -369,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41C3EE38192A41A8006C84DC /* MAITakePictureView.m in Sources */,
 				419321F11925262600108B6C /* UIImage+ImageEffects.m in Sources */,
 				4113F05E19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */,
 				41093AF9192754B700C35CA2 /* MAIAddCardViewController.m in Sources */,

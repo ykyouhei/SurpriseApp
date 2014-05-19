@@ -8,7 +8,6 @@
 
 #import "MAIHistoryViewController.h"
 
-#import "MAIHistoryReflectionView.h"
 #import "MAICardModelManager.h"
 #import "MAICardModel.h"
 
@@ -16,12 +15,10 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 
 @interface MAIHistoryViewController ()
 @property (weak, nonatomic) IBOutlet iCarousel *carousel;
-
 @property (weak, nonatomic) IBOutlet UIImageView *kyouhei;
 @property (weak, nonatomic) IBOutlet UIImageView *mai;
 
 @property (weak, nonatomic) MAICardModelManager *cardModelManager;
-
 @property (strong, nonatomic) CAEmitterLayer *emitterLayer;
 
 @end
@@ -34,7 +31,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 	// Do any additional setup after loading the view, typically from a nib.
     [self makeParcel];
     
-    self.carousel.type = iCarouselOptionFadeMax;
+    self.carousel.type = iCarouselTypeLinear;
+    self.carousel.vertical = NO;
     self.carousel.bounces = NO;
     
     self.cardModelManager = [MAICardModelManager sharedManager];
@@ -54,7 +52,6 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void)makeParcel
 {
     self.emitterLayer = [CAEmitterLayer layer];
@@ -72,10 +69,6 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     emitterCell.velocity = 300;
     emitterCell.xAcceleration = 10;
     emitterCell.yAcceleration = 10;
-//    emitterCell.color = [UIColor colorWithRed:0.3
-//                                        green:0.56
-//                                         blue:0.36
-//                                        alpha:0.5].CGColor;
     self.emitterLayer.emitterCells = @[emitterCell];
     self.emitterLayer.hidden = YES;
     [self.view.layer addSublayer:self.emitterLayer];
@@ -89,6 +82,10 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 {
 }
 
+- (IBAction)addCardActionForSegue:(UIStoryboardSegue *)segue
+{
+    NSLog(@"First view return action invoked.");
+}
 
 
 /***************************************************/
@@ -105,48 +102,49 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     return self.cardModelManager.storedCards.count + self.cardModelManager.tutorialCards.count;
 }
 
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(MAIHistoryReflectionView *)view
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
 {
     //create new view if no view is available for recycling
-    if (view == nil)
-    {
-        MAIHistoryReflectionView *historyView = [[MAIHistoryReflectionView alloc] initWithFrame:CGRectMake(0, 0, 260, 400)];
-        view = historyView;
+    // 写真撮影ビューの場合
+    if (self.cardModelManager.enableTutorial &&
+        index == self.cardModelManager.tutorialCards.count - 1) {
+        MAITakePictureView *pictureView = [[MAITakePictureView alloc] initWithFrame:CGRectMake(0, 0, 234, 360)];
+        pictureView.delegate = self;
+        NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:kMarryImageKey];
+        if(imageData) {
+            pictureView.imageView.image = [UIImage imageWithData:imageData];
+        }
+        return pictureView;
     }
     
-    //set image
+    if (view == nil || [view isKindOfClass:[MAITakePictureView class]])
+    {
+        MAIHistoryReflectionView *historyView = [[MAIHistoryReflectionView alloc] initWithFrame:CGRectMake(0, 0, 234, 360)];
+        view = historyView;
+    }
     __weak MAICardModel *cardModel;
     if (self.cardModelManager.enableTutorial && index < self.cardModelManager.tutorialCards.count) {
         cardModel = self.cardModelManager.tutorialCards[index];
     } else {
         cardModel = self.cardModelManager.storedCards[index-self.cardModelManager.tutorialCards.count];
     }
-    
-    if (index == self.cardModelManager.tutorialCards.count - 1) {
-        view.marryView.hidden = NO;
-        view.backView.hidden = YES;
-        
-        NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:kMarryImageKey];
-        if(imageData) {
-            view.marryImageView.image = [UIImage imageWithData:imageData];
-            view.marryImageButton.hidden = YES;
-        } else {
-            view._delegate = self;
-        }
-        return view;
-    }
-
-    view.backView.hidden = !cardModel.isBack;
-    view.imageView.image = cardModel.mainImage;
-    view.titleLabe.text = cardModel.title;
-    view.dateLabel.text = [cardModel dateString];
-    view.backImageView.image = [cardModel.mainImage applyLightEffect];
+    ((MAIHistoryReflectionView *)view).backView.hidden = !cardModel.isBack;
+    ((MAIHistoryReflectionView *)view).frontView.hidden = cardModel.isBack;
+    ((MAIHistoryReflectionView *)view).imageView.image = cardModel.mainImage;
+    ((MAIHistoryReflectionView *)view).titleLabe.text = cardModel.title;
+    ((MAIHistoryReflectionView *)view).dateLabel.text = [cardModel dateString];
     
     return view;
 }
 
 - (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index
 {
+    // 写真撮影ビューの場合
+    if (self.cardModelManager.enableTutorial &&
+        index == self.cardModelManager.tutorialCards.count - 1) {
+        return;
+    }
+    
     MAIHistoryReflectionView *view = (MAIHistoryReflectionView *)[carousel itemViewAtIndex:index];
     __weak MAICardModel *cardModel;
     if (self.cardModelManager.enableTutorial && index < self.cardModelManager.tutorialCards.count) {
@@ -157,6 +155,7 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     
     [UIView transitionWithView:view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
         view.backView.hidden = cardModel.isBack;
+        view.frontView.hidden = !cardModel.isBack;
     } completion:^(BOOL finished) {
         cardModel.isBack = !cardModel.isBack;
     }];
@@ -172,11 +171,19 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     self.mai.right = self.view.width - (self.view.width-self.mai.width-10)/2*rate;
 }
 
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    if (option == iCarouselOptionSpacing) {
+        return 0.9f;
+    }
+    return value;
+}
+
 /***************************************************/
-#pragma mark - MAIHistoryReflectionViewDelegate
+#pragma mark - MAITakePictureViewDelegate
 /***************************************************/
 
--(void)takeAPicture
+- (void)takePictureViewDidTapImage:(MAITakePictureView *)view
 {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         UIImagePickerController *ipc =

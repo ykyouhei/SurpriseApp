@@ -57,13 +57,12 @@
 - (IBAction)didTapOkButton:(id)sender
 {
     MAICardModel *card = [[MAICardModel alloc] init];
-    card.mainImage = self.imageView.image;
     card.title = self.titleTextField.text;
     card.date = self.date;
     card.message = self.messageTextView.text;
     [[MAICardModelManager sharedManager].storedCards addObject:card];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didTapCancelButton:(id)sender
@@ -103,7 +102,7 @@
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"ja_JP"]];
-    [df setDateFormat:@"yyyy年MM月dd日"];
+    [df setDateFormat:@"yyyy.MM.dd"];
     
     self.textField.text = [df stringFromDate:date];
     self.date = date;
