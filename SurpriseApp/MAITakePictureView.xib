@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="234" height="360"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="srD-me-Ez6">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="srD-me-Ez6">
                     <rect key="frame" x="10" y="26" width="214" height="258"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <gestureRecognizers/>
@@ -28,7 +28,7 @@
                         <constraint firstAttribute="height" constant="258" id="Abi-iN-NN5"/>
                     </constraints>
                     <connections>
-                        <outletCollection property="gestureRecognizers" destination="8aA-fr-Jtw" appends="YES" id="jm5-Eb-OkA"/>
+                        <outletCollection property="gestureRecognizers" destination="Ho6-gs-v7E" appends="YES" id="6kj-p0-35v"/>
                     </connections>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014.05.14" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LY5-he-aHp" userLabel="Label - 2014.05.31">
@@ -70,10 +70,10 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <tapGestureRecognizer id="8aA-fr-Jtw">
+        <tapGestureRecognizer id="Ho6-gs-v7E">
             <connections>
-                <action selector="didTapImage:" destination="-1" id="dvH-Q0-j4m"/>
-                <outlet property="delegate" destination="-1" id="iCr-9y-yfg"/>
+                <action selector="didTapImage:" destination="-1" id="Jxn-mv-x9A"/>
+                <outlet property="delegate" destination="-1" id="y1L-kH-bxv"/>
             </connections>
         </tapGestureRecognizer>
     </objects>

@@ -21,6 +21,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 @property (weak, nonatomic) MAICardModelManager *cardModelManager;
 @property (strong, nonatomic) CAEmitterLayer *emitterLayer;
 
+@property (assign, nonatomic) BOOL isTookPhoto;
+
 @end
 
 @implementation MAIHistoryViewController
@@ -35,13 +37,15 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     self.carousel.vertical = NO;
     self.carousel.bounces = NO;
     
+    self.isTookPhoto = [[NSUserDefaults standardUserDefaults].dictionaryRepresentation.allKeys containsObject:kMarryImageKey];
+    
     self.cardModelManager = [MAICardModelManager sharedManager];
     [self.carousel reloadData];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     [self.carousel reloadData];
 }
@@ -99,7 +103,11 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    return self.cardModelManager.storedCards.count + self.cardModelManager.tutorialCards.count;
+    if (self.cardModelManager.enableTutorial) {
+        return self.cardModelManager.storedCards.count + self.cardModelManager.tutorialCards.count;
+    }
+    
+    return self.cardModelManager.storedCards.count;
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
@@ -126,7 +134,7 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     if (self.cardModelManager.enableTutorial && index < self.cardModelManager.tutorialCards.count) {
         cardModel = self.cardModelManager.tutorialCards[index];
     } else {
-        cardModel = self.cardModelManager.storedCards[index-self.cardModelManager.tutorialCards.count];
+        cardModel = self.cardModelManager.storedCards[index];
     }
     ((MAIHistoryReflectionView *)view).backView.hidden = !cardModel.isBack;
     ((MAIHistoryReflectionView *)view).frontView.hidden = cardModel.isBack;
@@ -150,7 +158,7 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     if (self.cardModelManager.enableTutorial && index < self.cardModelManager.tutorialCards.count) {
         cardModel = self.cardModelManager.tutorialCards[index];
     } else {
-        cardModel = self.cardModelManager.storedCards[index-self.cardModelManager.tutorialCards.count];
+        cardModel = self.cardModelManager.storedCards[index];
     }
     
     [UIView transitionWithView:view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromRight animations:^{
@@ -163,10 +171,10 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 
 - (void)carouselDidScroll:(iCarousel *)carousel
 {
-    CGFloat rate = carousel.scrollOffset / (carousel.numberOfItems-1);
+    CGFloat rate = carousel.numberOfItems == 1 ? 0 : carousel.scrollOffset / (carousel.numberOfItems-1);
     NSLog(@"%f", rate);
     
-    self.emitterLayer.hidden = !(carousel.numberOfItems-1 == carousel.scrollOffset);
+    self.emitterLayer.hidden = !(carousel.numberOfItems-1 == carousel.scrollOffset) || !self.isTookPhoto;
     self.kyouhei.left = (self.view.width-self.kyouhei.width-10)/2*rate;
     self.mai.right = self.view.width - (self.view.width-self.mai.width-10)/2*rate;
 }
@@ -217,6 +225,8 @@ didFinishSavingWithError:(NSError*)error contextInfo:(void*)context{
         NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
         [ud setObject:imageData forKey:kMarryImageKey];
         [ud synchronize];
+        
+        self.isTookPhoto = YES;
         
         [self.carousel reloadData];
     }

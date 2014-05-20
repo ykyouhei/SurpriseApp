@@ -60,9 +60,12 @@
     card.title = self.titleTextField.text;
     card.date = self.date;
     card.message = self.messageTextView.text;
+    card.mainImage = self.imageView.image;
+    [MAICardModelManager sharedManager].enableTutorial = NO;
     [[MAICardModelManager sharedManager].storedCards addObject:card];
     
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)didTapCancelButton:(id)sender
