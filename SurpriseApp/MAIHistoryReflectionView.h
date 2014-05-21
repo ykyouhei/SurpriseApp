@@ -7,13 +7,13 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "ReflectionView.h"
 
 @interface MAIHistoryReflectionView : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *frontView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabe;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet UIView *backView;

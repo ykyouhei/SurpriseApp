@@ -87,16 +87,20 @@ static NSString *const kEnableTutorial = @"enableTutorial";
 - (void)p_setUpTutorialCards
 {
     _tutorialCards = [NSMutableArray array];
-    if (!self.enableTutorial) {
-        return;
-    }
-    
-    for (NSInteger i = 1; i < 6; i++) {
+
+    NSBundle* bundle = [NSBundle mainBundle];
+    //読み込むファイルパスを指定
+    NSString* path = [bundle pathForResource:@"Text" ofType:@"plist"];
+    NSArray* arr = [NSArray arrayWithContentsOfFile:path];
+    NSInteger i = 1;
+    for (NSDictionary *dic in arr) {
         MAICardModel *card = [[MAICardModel alloc] init];
         card.mainImage = [UIImage imageNamed:(NSString*)[NSString stringWithFormat:@"photo_%ld", (long)i]];
-        card.title = @"ほげほげ";
-        card.date = [NSDate date];
+        card.title = dic[@"title"];
+        card.message = dic[@"message"];
+        card.date = dic[@"date"];
         [self.tutorialCards addObject:card];
+        i++;
     }
 }
 

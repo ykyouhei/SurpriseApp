@@ -46,8 +46,6 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    [self.carousel reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +66,7 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     emitterCell.contents = (__bridge id)(image.CGImage);
     emitterCell.emissionLongitude = M_PI*2;
     emitterCell.emissionRange = M_PI*2;
-    emitterCell.birthRate = 20;
+    emitterCell.birthRate = 50;
     emitterCell.lifetimeRange = 10.0;
     emitterCell.velocity = 300;
     emitterCell.xAcceleration = 10;
@@ -86,9 +84,10 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 {
 }
 
-- (IBAction)addCardActionForSegue:(UIStoryboardSegue *)segue
+- (IBAction)dismissForSegue:(UIStoryboardSegue *)segue
 {
     NSLog(@"First view return action invoked.");
+    [self.carousel reloadData];
 }
 
 
@@ -140,6 +139,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     ((MAIHistoryReflectionView *)view).frontView.hidden = cardModel.isBack;
     ((MAIHistoryReflectionView *)view).imageView.image = cardModel.mainImage;
     ((MAIHistoryReflectionView *)view).titleLabe.text = cardModel.title;
+    ((MAIHistoryReflectionView *)view).messageLabel.text = cardModel.message;
+    
     ((MAIHistoryReflectionView *)view).dateLabel.text = [cardModel dateString];
     
     return view;

@@ -194,6 +194,7 @@
                                 </state>
                                 <connections>
                                     <action selector="didTapOkButton:" destination="8MT-Ee-6iC" eventType="touchUpInside" id="Xhw-bj-g1C"/>
+                                    <segue destination="Val-TV-uAP" kind="unwind" unwindAction="dismissForSegue:" id="gwo-Dg-X7b"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oUe-Oa-4d9">
@@ -230,6 +231,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7r-Wt-HK8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Val-TV-uAP" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="qsB-Qs-Qzq">
                     <connections>
                         <action selector="didTapImageView:" destination="8MT-Ee-6iC" id="zyy-B0-afn"/>
@@ -238,6 +240,78 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="363" y="-87"/>
+        </scene>
+        <!--View Controller - ライセンス-->
+        <scene sceneID="d3W-i9-OsA">
+            <objects>
+                <viewController id="LKl-0e-jRe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1pH-eh-ZGI"/>
+                        <viewControllerLayoutGuide type="bottom" id="SLa-sY-Y5t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YWc-wE-wiZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GG-eV-Efn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">本アプリは下記のオープンソースを利用しています。
+
+iCarousel
+
+Version 1.7.6, July 1st, 2013
+
+Copyright (C) 2011 Charcoal Design
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+   
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+   
+3. This notice may not be removed or altered from any source distribution.
+
+
+
+CKCalendar
+
+Copyright (c) 2013 Jason Kozemczak
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0GG-eV-Efn" firstAttribute="top" secondItem="YWc-wE-wiZ" secondAttribute="top" id="4Rl-ob-5a0"/>
+                            <constraint firstItem="SLa-sY-Y5t" firstAttribute="top" secondItem="0GG-eV-Efn" secondAttribute="bottom" id="PNk-0s-Hjg"/>
+                            <constraint firstItem="0GG-eV-Efn" firstAttribute="leading" secondItem="YWc-wE-wiZ" secondAttribute="leading" id="ZpJ-TB-t04"/>
+                            <constraint firstAttribute="trailing" secondItem="0GG-eV-Efn" secondAttribute="trailing" id="g0q-zM-8Kc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ライセンス" id="pXl-z8-cBg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FkK-Dn-LXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="890" y="-94"/>
         </scene>
         <!--Settings Table View Controller - 設定-->
         <scene sceneID="IVt-JS-CDp">
@@ -267,15 +341,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="xU6-1k-6sK" style="IBUITableViewCellStyleDefault" id="Hrf-wP-Jrq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="xU6-1k-6sK" style="IBUITableViewCellStyleDefault" id="Hrf-wP-Jrq">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hrf-wP-Jrq" id="iiJ-Bu-HrQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="ライセンス" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xU6-1k-6sK">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -283,6 +357,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="LKl-0e-jRe" kind="push" id="un1-vG-JsX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -296,11 +373,13 @@
                         <barButtonItem key="rightBarButtonItem" title="閉じる" id="83U-bk-DfD">
                             <connections>
                                 <action selector="didTapCloseButton:" destination="qdi-nF-Egq" id="y9C-i7-cyf"/>
+                                <segue destination="428-VT-82X" kind="unwind" unwindAction="dismissForSegue:" id="YP4-1X-gSh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3Q-uw-fHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="428-VT-82X" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="890" y="607"/>
         </scene>
