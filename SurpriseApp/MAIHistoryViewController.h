@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@import AVFoundation;
 
 #import <iCarousel/iCarousel.h>
 #import "MAIHistoryReflectionView.h"

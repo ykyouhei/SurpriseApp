@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16ABB8D8E08643EB821FF76B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BCE2136A1E54B699EA2DC27 /* libPods.a */; };
+		41035F4F192E65CF00B7FA56 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41035F4E192E65CF00B7FA56 /* AVFoundation.framework */; };
 		41093AF9192754B700C35CA2 /* MAIAddCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 41093AF8192754B700C35CA2 /* MAIAddCardViewController.m */; };
 		4113F05E19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4113F05D19226F92004CB8F8 /* MAIHistoryReflectionView.m */; };
 		4113F05F19226F92004CB8F8 /* MAIHistoryReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4113F05D19226F92004CB8F8 /* MAIHistoryReflectionView.m */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		0BCE2136A1E54B699EA2DC27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		41035F4E192E65CF00B7FA56 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		41093AF7192754B700C35CA2 /* MAIAddCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAIAddCardViewController.h; sourceTree = "<group>"; };
 		41093AF8192754B700C35CA2 /* MAIAddCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAIAddCardViewController.m; sourceTree = "<group>"; };
 		4113F05C19226F92004CB8F8 /* MAIHistoryReflectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAIHistoryReflectionView.h; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41035F4F192E65CF00B7FA56 /* AVFoundation.framework in Frameworks */,
 				412F0C401922530D00A3727E /* CoreGraphics.framework in Frameworks */,
 				412F0C421922530D00A3727E /* UIKit.framework in Frameworks */,
 				412F0C3E1922530D00A3727E /* Foundation.framework in Frameworks */,
@@ -172,6 +175,7 @@
 		412F0C3C1922530D00A3727E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41035F4E192E65CF00B7FA56 /* AVFoundation.framework */,
 				412F0C3D1922530D00A3727E /* Foundation.framework */,
 				412F0C3F1922530D00A3727E /* CoreGraphics.framework */,
 				412F0C411922530D00A3727E /* UIKit.framework */,
@@ -308,6 +312,14 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "___FULLUSERNAME___";
 				TargetAttributes = {
+					412F0C391922530D00A3727E = {
+						DevelopmentTeam = 6EC83W22VX;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
+					};
 					412F0C5A1922530D00A3727E = {
 						TestTargetID = 412F0C391922530D00A3727E;
 					};
@@ -533,10 +545,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SurpriseApp/SurpriseApp-Prefix.pch";
 				INFOPLIST_FILE = "SurpriseApp/SurpriseApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -547,10 +562,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SurpriseApp/SurpriseApp-Prefix.pch";
 				INFOPLIST_FILE = "SurpriseApp/SurpriseApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "A878B5FD-979E-4E0F-9BDD-E8A7A00DBAC1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

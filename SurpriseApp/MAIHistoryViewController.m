@@ -23,6 +23,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
 
 @property (assign, nonatomic) BOOL isTookPhoto;
 
+@property (strong, nonatomic) AVSpeechSynthesizer *synthesizer;
+
 @end
 
 @implementation MAIHistoryViewController
@@ -32,6 +34,8 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self makeParcel];
+    
+    self.synthesizer = [[AVSpeechSynthesizer alloc] init];
     
     self.carousel.type = iCarouselTypeLinear;
     self.carousel.vertical = NO;
@@ -90,6 +94,42 @@ static NSString *const kMarryImageKey = @"kMarryImageKey";
     [self.carousel reloadData];
 }
 
+
+
+- (IBAction)speakMai:(id)sender
+{
+    __weak MAICardModel *cardModel;
+    if (self.cardModelManager.enableTutorial) {
+        cardModel = self.cardModelManager.tutorialCards[self.carousel.currentItemIndex];
+    } else {
+        cardModel = self.cardModelManager.storedCards[self.carousel.currentItemIndex];
+    }
+    
+    AVSpeechUtterance *ut = [AVSpeechUtterance speechUtteranceWithString:cardModel.title];
+    ut.pitchMultiplier = 1.2;
+    ut.rate = 0.1;
+    AVSpeechSynthesisVoice* JVoice = [AVSpeechSynthesisVoice voiceWithLanguage:@"ja-JP"];
+    ut.voice = JVoice;
+    [self.synthesizer speakUtterance:ut];
+}
+
+- (IBAction)speakKyouhei:(id)sender
+{
+    __weak MAICardModel *cardModel;
+    if (self.cardModelManager.enableTutorial) {
+        cardModel = self.cardModelManager.tutorialCards[self.carousel.currentItemIndex];
+    } else {
+        cardModel = self.cardModelManager.storedCards[self.carousel.currentItemIndex];
+    }
+    
+    AVSpeechUtterance *ut = [AVSpeechUtterance speechUtteranceWithString:cardModel.message];
+    ut.pitchMultiplier = 0.6;
+    ut.rate = 0.2;
+    AVSpeechSynthesisVoice* JVoice = [AVSpeechSynthesisVoice voiceWithLanguage:@"ja-JP"];
+    ut.voice = JVoice;
+    [self.synthesizer speakUtterance:ut];
+    
+}
 
 /***************************************************/
 #pragma mark - iCarousel Dalegate
@@ -232,4 +272,6 @@ didFinishSavingWithError:(NSError*)error contextInfo:(void*)context{
         [self.carousel reloadData];
     }
 }
+
+
 @end
